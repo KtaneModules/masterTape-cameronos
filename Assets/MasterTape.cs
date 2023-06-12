@@ -105,7 +105,7 @@ Buttons[6].AddInteractionPunch();
    }
 
    void playSong() {
-     Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
+     Audio.PlaySoundAtTransform("ButtonPress", Buttons[2].transform);
      scriptA.ShortSpin();
      scriptA2.ShortSpin();
      Debug.LogFormat("[Master Tapes " + ModuleId + "] Play button pressed. Song " + currentSong + " should be playing.", ModuleId);
@@ -306,7 +306,6 @@ void WinColors() {
      Audio.PlaySoundAtTransform("Solve", Buttons[2].transform);
      Solve();
      ModuleSolved = true;
-     Debug.Log(ModuleSolved);
      scriptA3.WinAnimation();
    }
 
@@ -397,15 +396,92 @@ void WinColors() {
       GetComponent<KMBombModule>().HandleStrike();
    }
 
+//THE BANE OF ALL EXISTENCE.... THE TWITCH PLAYS CODE...
+//Reworked entirely from the Girlfriend module. Many thanks.
+
 #pragma warning disable 414
-   private readonly string TwitchHelpMessage = @"Use !{0} to do something.";
+   private readonly string TwitchHelpMessage = @"Use `!{0} play` to play the song on the tape. Use `!{0} tape [1,2,3]` to select the tape stock from top to bottom. Use `!{0} speed [7 1/2,15]` to select the tape speed. Use `!{0} submit` to submit.";
 #pragma warning restore 414
 
-   IEnumerator ProcessTwitchCommand (string Command) {
-      yield return null;
-   }
+IEnumerator ProcessTwitchCommand (string Command) {
+
+     Command = Command.ToUpper();
+     yield return null;
+
+     switch (Command)
+     {
+         case "PLAY":
+             Buttons[2].OnInteract();
+             break;
+
+          case "TAPE 1":
+              Buttons[4].OnInteract();
+              break;
+          case "TAPE 2":
+              Buttons[5].OnInteract();
+              break;
+          case "TAPE 3":
+              Buttons[6].OnInteract();
+              break;
+
+          case "SPEED 7 1/2":
+              Buttons[0].OnInteract();
+              break;
+
+          case "SPEED 15":
+              Buttons[1].OnInteract();
+              break;
+
+         case "SUBMIT":
+             Buttons[3].OnInteract();
+             break;
+
+         default:
+                 yield return string.Format("sendtochaterror Invalid command");
+                 yield break;
+     }
+}
 
    IEnumerator TwitchHandleForcedSolve () {
-      yield return null;
+       int TwitchSpeed = currentSpeed;
+       int TwitchTapeStock = currentTapeStock;
+       int TwitchSong = currentSong;
+       switch(TwitchSpeed)
+       {
+         case 7:
+         Buttons[0].OnInteract();
+         break;
+         case 15:
+         Buttons[1].OnInteract();
+         break;
+         default:
+                 yield return string.Format("sendtochaterror Cannot assign speed");
+                 yield break;
+       }
+       switch(TwitchSong)
+       {
+         //4 is Scotch
+         //5 is BASF
+         //6 is Ampex
+         case 6:
+         Buttons[6].OnInteract();
+           break;
+         case 5:
+         Buttons[4].OnInteract();
+             break;
+         case 4:
+         Buttons[5].OnInteract();
+             break;
+         case 3:
+         Buttons[5].OnInteract();
+           break;
+       case 2:
+       Buttons[6].OnInteract();
+             break;
+         case 1:
+         Buttons[4].OnInteract();
+             break;
+       }
+       yield return ProcessTwitchCommand("submit");
    }
 }
