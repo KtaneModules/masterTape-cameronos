@@ -85,7 +85,7 @@ Buttons[6].AddInteractionPunch();
      else {
         transform.GetChild(1).GetComponent<Renderer>().material = LimeButton;
         transform.GetChild(2).GetComponent<Renderer>().material = BlueButton;
-        Debug.Log(Buttons[0] + " was pressed, assigning 7 1/2 ips speed.");
+        Debug.LogFormat("[Master Tapes " + ModuleId + "] Assigning 7 1/2 ips speed.", ModuleId);
         selectedSpeed = 7;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      }
@@ -98,7 +98,7 @@ Buttons[6].AddInteractionPunch();
      else {
         transform.GetChild(2).GetComponent<Renderer>().material = LimeButton;
         transform.GetChild(1).GetComponent<Renderer>().material = RedButton;
-        Debug.Log(Buttons[0] + " was pressed, assigning 15 ips speed.");
+        Debug.LogFormat("[Master Tapes " + ModuleId + "] Assigning 15 ips speed.", ModuleId);
         selectedSpeed = 15;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      }
@@ -108,7 +108,7 @@ Buttons[6].AddInteractionPunch();
      Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      scriptA.ShortSpin();
      scriptA2.ShortSpin();
-     Debug.Log(Buttons[2] + " was pressed; song " + currentSong + " will play.");
+     Debug.LogFormat("[Master Tapes " + ModuleId + "] Play button pressed. Song " + currentSong + " should be playing.", ModuleId);
      switch (currentSong)
         {
         case 6:
@@ -137,9 +137,9 @@ Buttons[6].AddInteractionPunch();
    public void submitAnswer() {
      Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      if(!ModuleSolved) {
-       //Write notes about what was right and wrong. Someone can fix this logging system later.
-       Debug.Log("Correct speed was: " + currentSpeed + ", seleceted speed was: " + selectedSpeed);
-       Debug.Log("Correct tape stock was: " + currentTapeStock + ", seleceted tape stock was: " + selectedTapeStock);
+       //Write notes about what was right and wrong.
+       Debug.LogFormat("[Master Tapes " + ModuleId + "] Submitted tape stock was: " + selectedTapeStock + ".", ModuleId);
+       Debug.LogFormat("[Master Tapes " + ModuleId + "] Submitted tape speed was: " + selectedSpeed + ".", ModuleId);
        //Actual cases for songs being the correct ones
        //I just realized this entire switch case is unneccessary but It feels like it is for some reason... oh well... better coding next time...
        switch (currentSong)
@@ -219,12 +219,14 @@ Buttons[6].AddInteractionPunch();
 
 
 void ClearColors() {
-  //Clears all inputs of colors.
+  //Clears all inputs of colors. Gets rid of selections.
   TargetTapeOneChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
   TargetTapeTwoChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
   TargetTapeThreeChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
   transform.GetChild(1).GetComponent<Renderer>().material = RedButton;
   transform.GetChild(2).GetComponent<Renderer>().material = BlueButton;
+  selectedSpeed = 0;
+  selectedTapeStock = 0;
 }
 
 void WinColors() {
@@ -246,7 +248,7 @@ void WinColors() {
        TargetTapeOneChilds.GetChild(0).GetComponent<Renderer>().material = LimeButton;
         TargetTapeTwoChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
         TargetTapeThreeChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
-        Debug.Log(Buttons[4] + " was pressed, assigning first tape stock");
+        Debug.LogFormat("[Master Tapes " + ModuleId + "] Assigning first tape stock (1).", ModuleId);
         selectedTapeStock = 1;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      }
@@ -259,7 +261,7 @@ void WinColors() {
        TargetTapeOneChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
         TargetTapeTwoChilds.GetChild(0).GetComponent<Renderer>().material = LimeButton;
         TargetTapeThreeChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
-        Debug.Log(Buttons[4] + " was pressed, assigning second tape stock");
+        Debug.LogFormat("[Master Tapes " + ModuleId + "] Assigning second tape stock (2).", ModuleId);
         selectedTapeStock = 2;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      }
@@ -273,7 +275,7 @@ void WinColors() {
        TargetTapeOneChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
         TargetTapeTwoChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
         TargetTapeThreeChilds.GetChild(0).GetComponent<Renderer>().material = LimeButton;
-        Debug.Log(Buttons[4] + " was pressed, assigning third tape stock");
+        Debug.LogFormat("[Master Tapes " + ModuleId + "] Assigning third tape stock (3).", ModuleId);
         selectedTapeStock = 3;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
      }
@@ -284,6 +286,7 @@ void WinColors() {
      scriptA2.FastForward();
      StartCoroutine(StartSolveAfterDelay());
      Audio.PlaySoundAtTransform("FastForward", Buttons[0].transform);
+     DisplayTexts[0].text = "ARCHIVING...";
    }
 
    private System.Collections.IEnumerator StartSolveAfterDelay()
@@ -295,10 +298,11 @@ void WinColors() {
    }
 
    void ActualSolve() { //Glorious fun
+     DisplayTexts[0].text = "CORRECT";
      WinColors();
      scriptA.WinSpin();
      scriptA2.WinSpin();
-     Debug.Log(Buttons[3] + " was pressed, submitting answers of " + selectedTapeStock + " and " + selectedSpeed + " ips.");
+     Debug.LogFormat("[Master Tapes " + ModuleId + "] Submitting answers of " + selectedSpeed + " ips, and tape stock number " +selectedTapeStock+".", ModuleId);
      Audio.PlaySoundAtTransform("Solve", Buttons[2].transform);
      Solve();
      ModuleSolved = true;
@@ -372,12 +376,13 @@ void WinColors() {
    }
 
    void Start () { //Shit
+     DisplayTexts[0].text = "SUBMIT"; //resets if someone fucks something up
      DetermineCorrectSong();
      DetermineCorrectSpeed();
      DetermineCorrectTapeStock();
-     Debug.Log(currentSong + " is the song.");
-     Debug.Log(currentSpeed + " is the correct speed.");
-     Debug.Log(currentTapeStock + " is the correct tape stock.");
+     Debug.LogFormat("[Master Tapes " + ModuleId + "] Song number is " + currentSong + ".", ModuleId);
+     Debug.LogFormat("[Master Tapes " + ModuleId + "] Correct speed is " + currentSpeed + ".", ModuleId);
+     Debug.LogFormat("[Master Tapes " + ModuleId + "] Correct tape stock is " + currentTapeStock + ".", ModuleId);
    }
 
    void Update () { //Shit that happens at any point after initialization

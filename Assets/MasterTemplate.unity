@@ -194,7 +194,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &842466009
+--- !u!1001 &362634229
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -236,31 +236,6 @@ Prefab:
     - target: {fileID: 1676409040304040, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15, type: 2}
       propertyPath: m_Name
       value: MasterTape
-      objectReference: {fileID: 0}
-    - target: {fileID: 114461249202254606, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
-        type: 2}
-      propertyPath: amplitude
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114461249202254606, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
-        type: 2}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114756590550919380, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114756590550919380, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
-        type: 2}
-      propertyPath: speedToUse
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114898728258603052, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15,
-        type: 2}
-      propertyPath: speedToUse
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85a2c623b85c45f4fbcbd5bedc7a4b15, type: 2}
