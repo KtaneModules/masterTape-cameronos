@@ -14,10 +14,11 @@ MonoBehaviour:
   id: template
   title: Template
   author: 
-  description: "[INSERT FLAVOR TEXT HERE]\n\n[INSERT SOLVING DESCRIPTION HERE]\n\n[INSERT
-    POTENTIAL CREDITS HERE]\n\nThe manual can be found in the manuals folder of the
-    game or at ktane.timwi.de.\n\r\nContact Fartlicker777#9169 on Discord if there
-    are any bugs."
+  description: "Master Tapes 1.0\r\n\"2008 Universal Studios fire...? Never heard
+    of it.\"\r\n\r\nDeduct the correct speed and tape stock a master tape was stored
+    on!\r\n\r\nFeatures 6 songs.\r\nWill update with more in future.\r\nWill try to
+    avoid copyright strikes.\r\n\r\nModule ID: masterTape\r\nCreated by, Idea: cameronos\r\nTape
+    Recorder Model: YJ_ on SketchFab"
   version: 
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 9648fd1aa6dc4d74dbebd320352c6aa9, type: 3}
