@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateReels : MonoBehaviour {
-
+	
 	public static int spinSpeed = 0;
 	public int speedToUse = spinSpeed * -1;
 	bool spinning = false;
@@ -83,6 +83,7 @@ private System.Collections.IEnumerator ShortSpinCoroutine()
 			transform.Rotate(0, speedToUse * Time.deltaTime, 0);
 			yield return null; // Wait for the next frame
 	}
+
 }
 
 	// Update is called once per frame

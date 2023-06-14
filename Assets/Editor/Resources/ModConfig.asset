@@ -11,14 +11,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
   m_Name: ModConfig
   m_EditorClassIdentifier: 
-  id: template
-  title: Template
-  author: 
-  description: "Master Tapes 1.4\n\"2008 Universal Studios fire...? Never heard of
-    it.\"\r\n\r\nDeduct the correct speed and tape stock a master tape was stored
-    on!\r\n\r\nFeatures 6 songs.\r\nWill update with more in future.\r\nWill try to
-    avoid copyright strikes.\r\n\r\nModule ID: masterTape\r\nCreated by, Idea: cameronos\r\nTape
-    Recorder Model: YJ_ on SketchFab"
-  version: 
+  id: masterTape
+  title: Master Tapes
+  author: cameron
+  description: "Master Tapes 1.5\r\n\"2008 Universal Studios fire...? Never heard
+    of it.\"\r\n\r\nDeduct the correct speed and tape stock a master tape was stored
+    on!\r\n\r\nManual: https://ktane.timwi.de/HTML/Master%20Tapes.html\r\nFeatures
+    9 songs.\r\nWill update with more in future.\r\nWill try to avoid copyright strikes.\r\n\r\nWill
+    never guarantee satisfaction.\r\n\r\nModule ID: masterTape\r\nCreated by, Idea:
+    cameronos\r\nTape Recorder Model: YJ_ on SketchFab"
+  version: 1.6
   outputFolder: build
-  previewImage: {fileID: 2800000, guid: 8f2576051755041469b95afef9b56483, type: 3}
+  previewImage: {fileID: 2800000, guid: cc100b1e73e5ce94a8543360e4f2265f, type: 3}

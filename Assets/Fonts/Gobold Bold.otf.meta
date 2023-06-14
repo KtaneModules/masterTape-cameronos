@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c6d455c82ae263c4bba466f6c8146b58
+guid: fcb20a8ac7134b3418c6caa455600d53
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,14 +8,14 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Iskoola Pota
+  fontName: Gobold Bold
   fontNames:
-  - Iskoola Pota
+  - Gobold Bold
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: mod.bundle
   assetBundleVariant: 
