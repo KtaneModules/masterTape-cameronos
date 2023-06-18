@@ -21,6 +21,8 @@ public class MasterTape : MonoBehaviour {
    public WinAnimate scriptA3;
 
    //Wow this is dogshit
+   public Renderer[] Speeds;
+   public Renderer SubmitButton;
    public Transform TargetTapeOneChilds;
    public Transform TargetTapeTwoChilds;
    public Transform TargetTapeThreeChilds;
@@ -76,6 +78,8 @@ public class MasterTape : MonoBehaviour {
       Buttons[5].OnInteract += delegate () { assignSecTapeStock(); return false; };
       Buttons[6].OnInteract += delegate () { assignThirdTapeStock(); return false; };
 
+//Yc0gKJ4u-TU
+//Pyah!!!
 Buttons[0].AddInteractionPunch();
 Buttons[1].AddInteractionPunch();
 Buttons[2].AddInteractionPunch();
@@ -91,8 +95,8 @@ Buttons[6].AddInteractionPunch();
        //GET A JOB!!!
      }
      else {
-        transform.GetChild(1).GetComponent<Renderer>().material = LimeButton;
-        transform.GetChild(2).GetComponent<Renderer>().material = BlueButton;
+        Speeds[0].material = LimeButton;
+        Speeds[1].material = BlueButton;
         Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Assigning 7 1/2 ips speed.", ModuleId);
         selectedSpeed = 7;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
@@ -104,8 +108,8 @@ Buttons[6].AddInteractionPunch();
        //Good for nothing do nothing LOZER!
      }
      else {
-        transform.GetChild(2).GetComponent<Renderer>().material = LimeButton;
-        transform.GetChild(1).GetComponent<Renderer>().material = RedButton;
+        Speeds[1].material = LimeButton;
+        Speeds[0].material = RedButton;
         Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Assigning 15 ips speed.", ModuleId);
         selectedSpeed = 15;
         Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
@@ -168,129 +172,50 @@ Buttons[6].AddInteractionPunch();
  }
 }
 
-   public void submitAnswer() {
-     if(!ModuleSolved) {
-       //Write notes about what was right and wrong.
-       //Actual cases for songs being the correct ones
-       //I just realized this entire switch case is unneccessary but It feels like it is for some reason... oh well... better coding next time...
-       Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
-       switch (currentSong)
-           {
-             case 9:
-             if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-             {
-               OnSolve();
-             }
-             else {
-               Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-               Strike();
-               Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-               ClearColors();
-             }
-                 break;
-             case 8:
-             if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-             {
-               OnSolve();
-             }
-             else {
-               Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-               Strike();
-               Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-               ClearColors();
-             }
-                 break;
-             case 7:
-             if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-             {
-               Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and " + selectedTapeStock + " tape stock instead of " + currentSpeed +" ips and " + currentTapeStock + " tape stock.", ModuleId);
-               OnSolve();
-             }
-             else {
-               Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-               Strike();
-               Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-               ClearColors();
-             }
-                 break;
-           case 6:
-           if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-           {
-             OnSolve();
-           }
-           else {
-             Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-             Strike();
-             Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-             ClearColors();
-           }
-               break;
-           case 5:
-           if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-           {
-             OnSolve();
-           }
-           else {
-             Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-             Strike();
-             Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-             ClearColors();
-           }
-               break;
-           case 4:
-           if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-           {
-             OnSolve();
-           }
-           else {
-             Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-             Strike();
-             Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-             ClearColors();
-           }
-               break;
-           case 3:
-           if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-           {
-             OnSolve();
-           }
-           else {
-             Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-             Strike();
-             Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-             ClearColors();
-           }
-               break;
-         case 2:
-         if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-         {
-           OnSolve();
-         }
-         else {
-           Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-           Strike();
-           Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-           ClearColors();
-         }
-             break;
-           case 1:
-           if(selectedSpeed.Equals(currentSpeed) & selectedTapeStock.Equals(currentTapeStock) & (int)BombInfo.GetTime() % 10 == correctTime)
-           {
-             OnSolve();
-           }
-           else {
-             Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Strike! Defuser entered " + selectedSpeed + " ips and tape stock " + selectedTapeStock + " instead of " + currentSpeed +" ips and tape stock " + currentTapeStock + ".", ModuleId);
-             Strike();
-             Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
-             ClearColors();
-           }
-               break;
-             }
-     }
-     else{
-       //Do nothing. Why would we make a button do something if we already solved it? Omegalul.
-     }
+public void submitAnswer()
+{
+    if (!ModuleSolved)
+    {
+        //Removed that godawful extra 175 lines of code of switches that all did the same shit.
+        Audio.PlaySoundAtTransform("ButtonPress", Buttons[0].transform);
+        switch (currentSong)
+        {
+            case 9:
+            case 8:
+            case 7:
+            case 6:
+            case 5:
+            case 4:
+            case 3:
+            case 2:
+            case 1:
+                if (selectedSpeed.Equals(currentSpeed) && selectedTapeStock.Equals(currentTapeStock) && (int)BombInfo.GetTime() % 10 == correctTime)
+                {
+                    OnSolve();
+                }
+                else
+                {
+                    if ((int)BombInfo.GetTime() % 10 != correctTime)
+                    {
+                        Debug.LogFormat("[Master Tapes #{0}] Strike! Defuser entered incorrect time! The correct time to press was: {1}", ModuleId, correctTime);
+                    }
+                    else
+                    {
+                        Debug.LogFormat("[Master Tapes #{0}] Strike! Defuser entered {1} ips and tape stock {2} instead of {3} ips and tape stock {4}.", ModuleId, selectedSpeed, selectedTapeStock, currentSpeed, currentTapeStock);
+                    }
+                    Strike();
+                    Audio.PlaySoundAtTransform("Strike", Buttons[2].transform);
+                    ClearColors();
+                }
+                break;
+        }
+    }
+    else
+    {
+        // Do nothing. Module is already solved.
+    }
 }
+
 
 
 void ClearColors() {
@@ -298,8 +223,8 @@ void ClearColors() {
   TargetTapeOneChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
   TargetTapeTwoChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
   TargetTapeThreeChilds.GetChild(0).GetComponent<Renderer>().material = SmallButtons;
-  transform.GetChild(1).GetComponent<Renderer>().material = RedButton;
-  transform.GetChild(2).GetComponent<Renderer>().material = BlueButton;
+  Speeds[0].material = RedButton;
+  Speeds[1].material = BlueButton;
   selectedSpeed = 0;
   selectedTapeStock = 0;
 }
@@ -309,10 +234,10 @@ void WinColors() {
   TargetTapeOneChilds.GetChild(0).GetComponent<Renderer>().material = LimeButton;
   TargetTapeTwoChilds.GetChild(0).GetComponent<Renderer>().material = LimeButton;
   TargetTapeThreeChilds.GetChild(0).GetComponent<Renderer>().material = LimeButton;
-  transform.GetChild(1).GetComponent<Renderer>().material = LimeButton;
-  transform.GetChild(2).GetComponent<Renderer>().material = LimeButton;
+  Speeds[0].material = LimeButton;
+  Speeds[1].material = LimeButton;
   PlayButton.GetComponent<Renderer>().material = LimeButton;
-  transform.GetChild(5).GetComponent<Renderer>().material = LimeButton;
+  SubmitButton.material = LimeButton;
 }
 
    void assignFirstTapeStock() {
@@ -393,7 +318,7 @@ void WinColors() {
      WinColors();
      scriptA.WinSpin();
      scriptA2.WinSpin();
-     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Solved! Answers were " + selectedSpeed + " ips, and tape stock number " +selectedTapeStock+".", ModuleId);
+     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Solved! Answers were " + selectedSpeed + " ips, and tape stock number " +selectedTapeStock+". " + "Correct speed was pressed at: " + correctTime +".", ModuleId);
      Audio.PlaySoundAtTransform("Solve", Buttons[2].transform);
      Solve();
      ModuleSolved = true;
@@ -503,9 +428,9 @@ void WinColors() {
      DetermineCorrectSong();
      DetermineCorrectSpeed();
      DetermineCorrectTapeStock();
-     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Song number is " + currentSong + ".", ModuleId);
-     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Correct speed is " + currentSpeed + ".", ModuleId);
-     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Correct tape stock is " + currentTapeStock + ".", ModuleId);
+     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Song index number is " + currentSong + ".", ModuleId);
+     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Correct speed is " + currentSpeed + " ips.", ModuleId);
+     Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Correct tape stock is #" + currentTapeStock + ".", ModuleId);
      Debug.LogFormat("[Master Tapes " + "#" + ModuleId + "] Correct time to submit answers is " + correctTime + ".", ModuleId);
    }
 
@@ -559,40 +484,96 @@ IEnumerator ProcessTwitchCommand (string Command) {
 
 
 //Using all the same convuluted script. Works as it intends. Too lazy to change. Stolen from Color-Cycle. SUE ME!!!
-         case "SUBMIT AT 1":
-         while ((int)BombInfo.GetTime() % 10 == correctTime) yield return "trycancel"; //Fixes a really obscure bug with tp
-         while ((int)BombInfo.GetTime() % 10 != correctTime) yield return "trycancel";
-         Buttons[3].OnInteract();
-         yield return new WaitForSeconds(0.1f);
-             break;
+//This just submits it if its within the correct time, not the specified time...
+case "SUBMIT AT 1":
+  int submissionnum = 1;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
 
-        case "SUBMIT AT 2":
-        while ((int)BombInfo.GetTime() % 10 == correctTime) yield return "trycancel"; //Fixes a really obscure bug with tp
-        while ((int)BombInfo.GetTime() % 10 != correctTime) yield return "trycancel";
-        Buttons[3].OnInteract();
-        yield return new WaitForSeconds(0.1f);
-              break;
+case "SUBMIT AT 2":
+  int submissionnum1 = 2;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum1)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum1)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
 
-          case "SUBMIT AT 3":
-          while ((int)BombInfo.GetTime() % 10 == correctTime) yield return "trycancel"; //Fixes a really obscure bug with tp
-          while ((int)BombInfo.GetTime() % 10 != correctTime) yield return "trycancel";
-          Buttons[3].OnInteract();
-          yield return new WaitForSeconds(0.1f);
-                 break;
+case "SUBMIT AT 3":
+  int submissionnum2 = 3;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum2)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum2)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
 
-            case "SUBMIT AT 4":
-            while ((int)BombInfo.GetTime() % 10 == correctTime) yield return "trycancel"; //Fixes a really obscure bug with tp
-            while ((int)BombInfo.GetTime() % 10 != correctTime) yield return "trycancel";
-            Buttons[3].OnInteract();
-            yield return new WaitForSeconds(0.1f);
-                   break;
+case "SUBMIT AT 4":
+  int submissionnum3 = 4;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum3)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum3)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
 
-            case "SUBMIT AT 5":
-            while ((int)BombInfo.GetTime() % 10 == correctTime) yield return "trycancel"; //Fixes a really obscure bug with tp
-            while ((int)BombInfo.GetTime() % 10 != correctTime) yield return "trycancel";
-            Buttons[3].OnInteract();
-            yield return new WaitForSeconds(0.1f);
-                   break;
+case "SUBMIT AT 5":
+  int submissionnum4 = 5;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum4)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum4)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
+
+case "SUBMIT AT 6":
+  int submissionnum5 = 6;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum5)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum5)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
+
+case "SUBMIT AT 7":
+  int submissionnum6 = 8;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum6)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum6)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
+
+case "SUBMIT AT 8":
+  int submissionnum7 = 9;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum7)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum7)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
+
+case "SUBMIT AT 9":
+  int submissionnum8 = 9;
+  while ((int)BombInfo.GetTime() % 10 == submissionnum8)
+    yield return "trycancel";  // Fixes a really obscure bug with tp
+  while ((int)BombInfo.GetTime() % 10 != submissionnum8)
+    yield return "trycancel";
+  Buttons[3].OnInteract();
+  yield return new WaitForSeconds(0.1f);
+  break;
 
          default:
                  yield return string.Format("sendtochaterror Invalid command or cannot press button currently");
