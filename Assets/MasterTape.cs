@@ -448,9 +448,10 @@ void WinColors() {
 
 //THE BANE OF ALL EXISTENCE.... THE TWITCH PLAYS CODE...
 //Reworked entirely from the Girlfriend module. Many thanks.
-
+//Thanks VFlyer for new help message YAYAYAYA.
+//https://www.youtube.com/watch?v=VUtX0ZKlwis WORD UP BIRD UP
 #pragma warning disable 414
-   private readonly string TwitchHelpMessage = @"Use `!{0} play` to play the song on the tape. Use `!{0} tape [1,2,3]` to select the tape stock from top to bottom. Use `!{0} speed [7 1/2,15]` to select the tape speed. Use `!{0} submit` to submit.";
+   private readonly string TwitchHelpMessage = @"Use `!{0} play` to play the song on the tape. Use `!{0} tape [1,2,3]` to select the tape stock from top to bottom. Use `!{0} speed [7 1/2,15]` to select the tape speed. Use `!{0} submit at #` to submit when the last seconds digit of the countdown timer is that value.";
 #pragma warning restore 414
 
 IEnumerator ProcessTwitchCommand (string Command) {
